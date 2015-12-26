@@ -1,0 +1,1 @@
+var someString = 'This doesn't compile';

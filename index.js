@@ -1,5 +1,6 @@
 var fs = require('fs');
 var vm = require('vm');
+var acorn = require('acorn');
 
 module.exports = jsInclude;
 
@@ -21,11 +22,28 @@ function jsInclude(files, namespace) {
         throw new TypeError();
     }
 
-    files.forEach(function(filename) {
+    files.forEach(function (filename) {
         var content = fs.readFileSync(filename);
+        try {
+            acorn.parse(content);
+        } catch (e) {
+            throw new EvalError(formatError(e, filename));
+        }
         var script = new vm.Script(content);
         script.runInNewContext(namespace);
     });
 
     return namespace;
 }
+
+/**
+ * @param {SyntaxError} exception
+ * @param {string} filename
+ * @returns {string}
+ */
+function formatError(exception, filename) {
+    return filename
+        + '(' + exception.loc.line + ':' + exception.loc.column + ') '
+        + exception.message.replace(/\s?\(\d+:\d+\)$/, '');
+}
+

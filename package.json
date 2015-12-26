@@ -16,5 +16,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/nomaed/js-include.git"
+  },
+  "dependencies": {
+    "acorn": "^2.6.4"
   }
 }
