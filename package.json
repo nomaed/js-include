@@ -1,6 +1,6 @@
 {
   "name": "js-include",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Includes a JS file in Node.JS that isn't a node module and wraps its outcome in a namespace.",
   "main": "index.js",
   "scripts": {
