@@ -12,5 +12,9 @@
     "require"
   ],
   "author": "Boris Aranovich",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nomaed/js-include.git"
+  }
 }
