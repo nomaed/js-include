@@ -7,11 +7,11 @@ module.exports = jsInclude;
 /**
  * Read a Javascript file, execute it in an isolated nameSpace and return it, to be used as namespace.
  * @param {string[]|string} files
- * @param {{}=} namespace
- * @returns {*}
+ * @param {{}} [namespace]
+ * @returns {{}}
  */
 function jsInclude(files, namespace) {
-    if (typeof namespace === 'undefined') {
+    if (namespace == null) {
         namespace = {};
     }
 
